@@ -12,8 +12,8 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="manifest" href="./manifest.json">
-    <link rel="stylesheet" href="index.css">
+    <link rel="manifest" href="./ohif-static/manifest.json">
+    <link rel="stylesheet" href="/ohif-static/index.css">
 
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -52,41 +52,12 @@
         window.process = process;
     </script>
     <!--<script src="https://unpkg.com/ohif-viewer/dist/index.umd.js" crossorigin></script>!-->
-    <script src="deps/index.umd.js" crossorigin></script>
+    <script src="/ohif-static/deps/index.umd.js" crossorigin></script>
     <!--<script src="/node_modules/ohif-viewer/dist/index.umd.js" crossorigin></script>!-->
 
     <!-- Load our React component. -->
     <script>
-      var props = {"routerBasename": "/", rootUrl: "http://localhost:5000"};
-      /* props.servers = {
-          "dicomWeb": [{
-                    "name": "DCM4CHEE",
-                    "wadoUriRoot": "https://cancer.crowds-cure.org/dcm4chee-arc/aets/DCM4CHEE/wado",
-                    "qidoRoot": "https://cancer.crowds-cure.org/dcm4chee-arc/aets/DCM4CHEE/rs",
-                    "wadoRoot": "https://cancer.crowds-cure.org/dcm4chee-arc/aets/DCM4CHEE/rs",
-                    "qidoSupportsIncludeField": true,
-                    "imageRendering": "wadors",
-                    "thumbnailRendering": "wadors",
-                    "requestOptions": {
-                        "requestFromBrowser": true
-                    }
-                  }
-                ]
-          },
-          "oidc": [{
-              "authServerUrl": "https://cancer.crowds-cure.org/auth/realms/dcm4che",
-              "authRedirectUri": "http://localhost:5000/callback",
-              "postLogoutRedirectUri": "http://localhost:5000/logout-redirect.html",
-              "clientId": "crowds-cure-cancer",
-              "responseType": "id_token token",
-              "scope": "email profile openid",
-              "revokeAccessTokenOnSignout": true,
-              "extraQueryParams": {
-                "kc_idp_hint": "crowds-cure-cancer-auth0-oidc",
-                "client_id": "crowds-cure-cancer"
-              }
-          }]
-      }; */
+      var props = {"routerBasename": "/ohif/", rootUrl: "http://localhost:5000"};
     </script>
     <script>
         'use strict';
@@ -120,36 +91,6 @@
         };
 
 
-        /*
-        UI settings
-        Plugins
-            - Custom tools / buttons
-            - Custom Sidebar module thing
-            - Custom Viewports
-            - Custom Sop Class Interpreters
-        */
-
-          /*"PUBLIC_SETTINGS": {
-            "ui": {
-              "studyListFunctionsEnabled": true,
-              "leftSidebarOpen": false,
-              "displaySetNavigationLoopOverSeries": false,
-              "displaySetNavigationMultipleViewports": true,
-              "autoPositionMeasurementsTextCallOuts": "TRLB"
-            },
-            "prefetch": {
-              "order": "topdown",
-              "displaySetCount": 1
-            }
-         */
-
-        /*
-
-        White labelling example
-
-        // Note that you can't write JSX here, so you can use the online JSX compiler:
-        // https://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=GYVwdgxgLglg9mABACwKYBt1wBQEpEDeAUIogE6pQhlIA8AholPWQOaUC8ARAPoBG6emADWXchm5g4cAA6owqMoikVgiimTERBAZx0A5egFtU3NPQAmigLR8yQi2OSqzUKDIBcAei_2LMCHp0GCN6VhgwVgA6CDgjLgA-ElIU1LS02hDWRB0yCA4AcmQ3Tx8_AKCQsIjo2KMvAHcZa1iwKHkoLxAZLEsdLwAmAAYARgB2LxGRrwgyWTkLFrmZBetwMGNURYGomUiCxC8k9JOU2i96BIBuIgBfIiA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=6.26.0&envVersion=
-        */
         function RadicalImagingLogo() {
             return React.createElement(
                     "a",
