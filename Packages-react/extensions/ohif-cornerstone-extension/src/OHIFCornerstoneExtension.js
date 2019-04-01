@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OHIFCornerstoneViewport from './OHIFCornerstoneViewport.js';
+import ToolbarModule from './ToolbarModule.js';
 
 /**
  * Pass in 'children' to a React component. The purpose of this is to
@@ -10,9 +11,18 @@ import OHIFCornerstoneViewport from './OHIFCornerstoneViewport.js';
  * @param children
  * @return {function(*): *}
  */
-function withChildren(WrappedComponent, children) {
+function componentWithProps(WrappedComponent, children, customProps) {
   return function(props) {
-    return <WrappedComponent children={children} { ...props } />;
+    const extraProps = {
+      customProps
+    };
+    if (children.viewport) {
+      extraProps.children = children.viewport;
+    }
+
+    const mergedProps = Object.assign({}, props, extraProps);
+
+    return <WrappedComponent {...mergedProps} />;
   };
 }
 
@@ -20,8 +30,10 @@ function withChildren(WrappedComponent, children) {
 // https://github.com/whitecolor/yalc
 
 export default class OHIFCornerstoneExtension {
-  constructor(children) {
+  constructor(props) {
+    const { children = {}, customProps = {} } = props;
     this.children = children;
+    this.customProps = customProps;
   }
 
   /**
@@ -32,11 +44,11 @@ export default class OHIFCornerstoneExtension {
   }
 
   getViewportModule() {
-    if (this.children && this.children.viewport) {
-      return withChildren(OHIFCornerstoneViewport, this.children.viewport);
-    }
-
-    return OHIFCornerstoneViewport;
+    return componentWithProps(
+      OHIFCornerstoneViewport,
+      this.children,
+      this.customProps
+    );
   }
 
   getSopClassHandler() {
@@ -48,6 +60,6 @@ export default class OHIFCornerstoneExtension {
   }
 
   getToolbarModule() {
-    return null;
+    return ToolbarModule;
   }
 }
